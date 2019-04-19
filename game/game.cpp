@@ -8,9 +8,13 @@
 using namespace std;
 #include <SFML/Graphics.hpp>
 using namespace sf; 
+#include "ScreenUI.h"
+
 
 //============================================================
-// YOUR HEADER WITH YOUR NAME GOES HERE. PLEASE DO NOT FORGET THIS
+// Anthony Watson
+// Due Date: Fri, April 19th
+// Programming II
 //============================================================
 
 // note: a Sprite represents an image on screen. A sprite knows and remembers its own position
@@ -21,7 +25,6 @@ using namespace sf;
 void moveShip(Sprite& ship)
 {
 	const float DISTANCE = 5.0;
-
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		// left arrow is pressed: move our ship left 5 pixels
@@ -30,6 +33,7 @@ void moveShip(Sprite& ship)
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
+
 		// right arrow is pressed: move our ship right 5 pixels
 		ship.move(DISTANCE, 0);
 	}
@@ -48,6 +52,12 @@ int main()
 
 	// load textures from file into memory. This doesn't display anything yet.
 	// Notice we do this *before* going into animation loop.
+	Texture alienTexture;
+	if(!alienTexture.loadFromFile("rsz_alien"))
+	{
+		cout << "Unable to load alien texture!" << endl;
+		exit(EXIT_FAILURE);
+	}
 	Texture shipTexture;
 	if (!shipTexture.loadFromFile("ship.png"))
 	{
@@ -60,7 +70,15 @@ int main()
 		cout << "Unable to load stars texture!" << endl;
 		exit(EXIT_FAILURE);
 	}
+	
 
+	/*Texture secondAlien2Texture;
+	if (!secondAlien2Texture.loadFromFile("alienmothership.png"))
+	{
+		cout << "Unable to load mothership texture!" << endl;
+		exit(EXIT_FAILURE);
+	}
+	*/
 	// A sprite is a thing we can draw and manipulate on the screen.
 	// We have to give it a "texture" to specify what it looks like
 
@@ -72,7 +90,9 @@ int main()
 	// create sprite and texture it
 	Sprite ship;
 	ship.setTexture(shipTexture);
-
+	Sprite alien;
+	alien.setTexture(alienTexture);
+	
 
 	// initial position of the ship will be approx middle of screen
 	float shipX = window.getSize().x / 2.0f;
@@ -95,7 +115,7 @@ int main()
 			{
 				if (event.key.code == Keyboard::Space)
 				{
-					// handle space bar
+					
 				}
 				
 			}
@@ -116,7 +136,6 @@ int main()
 		// draw the ship on top of background 
 		// (the ship from previous frame was erased when we drew background)
 		window.draw(ship);
-
 
 		// end the current frame; this makes everything that we have 
 		// already "drawn" actually show up on the screen

@@ -151,6 +151,18 @@
   <ItemGroup>
     <Text Include="Readme.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Alien.h" />
+    <ClInclude Include="Armada.h" />
+    <ClInclude Include="HitBox.h" />
+    <ClInclude Include="Weapons.h" />
+    <ClInclude Include="ScreenMgr.h" />
+    <ClInclude Include="ScreenUI.h" />
+    <ClInclude Include="Ship.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\alien2.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
